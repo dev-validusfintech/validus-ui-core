@@ -1,7 +1,6 @@
 {
   "name": "@dev-validusfintech/validus-ui-core",
   "version": "1.0.0",
-  "private": true,
   "description": "Reusable TypeScript utilities for frontend (Mobile and Web)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,6 +19,15 @@
   ],
   "author": "Your Name",
   "license": "MIT",
+
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-validusfintech/validus-ui-core.git"
+  },
+
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^20.17.17",
