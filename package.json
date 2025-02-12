@@ -1,7 +1,8 @@
 {
-  "name": "shared-utils",
+  "name": "@dev-validusfintech/validus-ui-core",
   "version": "1.0.0",
-  "description": "Reusable TypeScript utilities for frontend & backend",
+  "private": true,
+  "description": "Reusable TypeScript utilities for frontend (Mobile and Web)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
