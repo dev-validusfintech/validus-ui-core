@@ -40,6 +40,11 @@
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.3"
   },
+  "files": [
+    "dist/",
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

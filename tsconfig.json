@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "rootDir": ".",  // Change from "src" to "."
+    "rootDir": "src",  // ✅ Compile only "src/"
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
@@ -12,7 +12,10 @@
     "baseUrl": "./",
     "paths": {
       "@utils/*": ["src/utils/*"]
-    }
+    },
+    "declaration": true,  // ✅ Generates `.d.ts` files
+    "declarationDir": "dist",  // ✅ Saves `.d.ts` files inside `dist/`
+    "emitDeclarationOnly": false  // ✅ Ensures `.js` and `.d.ts` are both generated
   },
-  "include": ["src", "tests"]  // Add "tests" folder
+  "include": ["src"]  // ✅ Compile only "src/", exclude "tests"
 }
