@@ -12,6 +12,32 @@ This package ensures:
 
 ## 🔧 **Installation Guide**
 
+### 🔑 **Prerequisite: Generate a GitHub Personal Access Token (PAT)**
+
+Since this package is private, you need a **GitHub Personal Access Token (PAT)** with the right permissions to install it.
+
+#### **Steps to Generate a GitHub PAT:**
+1️⃣ **Log into GitHub**
+2️⃣ Navigate to **`Settings → Developer Settings → Personal Access Tokens`**
+3️⃣ Click **"Generate new token"**
+4️⃣ Select **`read:packages`** permission (and `write:packages` if publishing)
+5️⃣ Click **Generate token** and **copy it** (it won’t be visible again!)
+
+---
+
+### 📥 **Configure npm for GitHub Packages**
+
+Before installing, you need to authenticate using the generated token.
+
+1️⃣ Create a `.npmrc` file in your project’s root folder:
+```ini
+//npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
+@dev-validusfintech:registry=https://npm.pkg.github.com/
+```
+📌 **Replace** `YOUR_PERSONAL_ACCESS_TOKEN` with the token you generated.
+
+---
+
 ### 📥 **Install via npm**
 ```sh
 npm install @dev-validusfintech/validus-ui-core
@@ -122,5 +148,3 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 ---
 
 💙 **Crafted with ❤️ for Developers** 🚀
-
----
