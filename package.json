@@ -17,7 +17,7 @@
     "frontend",
     "backend"
   ],
-  "author": "Your Name",
+  "author": "Shiv",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
