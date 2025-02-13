@@ -1,5 +1,8 @@
 const STRINGS = {
   AND: "and",
+  RUPEES: "Rupees",
+  PAISE: "Paise",
+  COMMA: ",",
   SPACE: " ",
   ZERO: "Zero",
   ONE: "One",
@@ -32,12 +35,16 @@ const STRINGS = {
   HUNDRED: "Hundred",
   THOUSAND: "Thousand",
   LAKH: "Lakh",
-  CRORE: "Crore"
+  CRORE: "Crore",
+  LIMIT_EXCEED: "Max limit crossed!",
 };
 
-export const amountInWords = (num: number): string => {
-  if (num === 0) return STRINGS.ZERO;
-  
+export const amountInWords = (amount: number): string => {
+  let number: number = Math.floor(amount);
+  let decimal: number = Number((amount - number).toFixed(2)) * 100;
+  if (number === 0 && decimal === 0) return STRINGS.ZERO;
+  if (number > 9999999999) return STRINGS.LIMIT_EXCEED;
+
   const singleDigits = [STRINGS.ZERO, STRINGS.ONE, STRINGS.TWO, STRINGS.THREE, STRINGS.FOUR, STRINGS.FIVE, STRINGS.SIX, STRINGS.SEVEN, STRINGS.EIGHT, STRINGS.NINE];
   const doubleDigits = [STRINGS.TEN, STRINGS.ELEVEN, STRINGS.TWELVE, STRINGS.THIRTEEN, STRINGS.FOURTEEN, STRINGS.FIFTEEN, STRINGS.SIXTEEN, STRINGS.SEVENTEEN, STRINGS.EIGHTEEN, STRINGS.NINETEEN];
   const tensPlace = ["", "", STRINGS.TWENTY, STRINGS.THIRTY, STRINGS.FORTY, STRINGS.FIFTY, STRINGS.SIXTY, STRINGS.SEVENTY, STRINGS.EIGHTY, STRINGS.NINETY];
@@ -51,25 +58,28 @@ export const amountInWords = (num: number): string => {
     return "";
   };
 
-  if (num >= 10000000) {
-    result += getWords(Math.floor(num / 10000000)) + STRINGS.SPACE + STRINGS.CRORE + STRINGS.SPACE;
-    num %= 10000000;
+  if (number >= 1000000000) {
+    result += singleDigits[Math.floor(number / 1000000000)] + STRINGS.SPACE + STRINGS.HUNDRED + STRINGS.SPACE + getWords(Math.floor(number / 10000000)) + (number % 1000000000 < 10000000 ? STRINGS.CRORE + STRINGS.SPACE : "");
+    number %= 1000000000;
   }
-  if (num >= 100000) {
-    result += getWords(Math.floor(num / 100000)) + STRINGS.SPACE + STRINGS.LAKH + STRINGS.SPACE;
-    num %= 100000;
+  if (number >= 10000000) {
+    result += getWords(Math.floor(number / 10000000)) + STRINGS.SPACE + STRINGS.CRORE + STRINGS.SPACE;
+    number %= 10000000;
   }
-  if (num >= 1000) {
-    result += getWords(Math.floor(num / 1000)) + STRINGS.SPACE + STRINGS.THOUSAND + STRINGS.SPACE;
-    num %= 1000;
+  if (number >= 100000) {
+    result += getWords(Math.floor(number / 100000)) + STRINGS.SPACE + STRINGS.LAKH + STRINGS.SPACE;
+    number %= 100000;
   }
-  if (num >= 100) {
-    result += singleDigits[Math.floor(num / 100)] + STRINGS.SPACE + STRINGS.HUNDRED + STRINGS.SPACE;
-    num %= 100;
+  if (number >= 1000) {
+    result += getWords(Math.floor(number / 1000)) + STRINGS.SPACE + STRINGS.THOUSAND + STRINGS.SPACE;
+    number %= 1000;
   }
-  if (num > 0) {
-    result += getWords(num);
+  if (number >= 100) {
+    result += singleDigits[Math.floor(number / 100)] + STRINGS.SPACE + STRINGS.HUNDRED + STRINGS.SPACE;
+    number %= 100;
   }
-
+  if (number > 0) {
+    result += getWords(number);
+  }
   return result.trim();
 };
