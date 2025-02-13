@@ -51,7 +51,7 @@ export const amountInWords = (amount: number): string => {
 
   let result = "";
 
-  const getWords = (n: number): string => {
+  const getWords = (n: number) => {
     if (n < 10) return singleDigits[n];
     if (n < 20) return doubleDigits[n - 10];
     if (n < 100) return tensPlace[Math.floor(n / 10)] + (n % 10 !== 0 ? STRINGS.SPACE + singleDigits[n % 10] : "");
@@ -81,5 +81,8 @@ export const amountInWords = (amount: number): string => {
   if (number > 0) {
     result += getWords(number);
   }
-  return result.trim();
+  if (decimal > 0) {
+    result += STRINGS.AND + STRINGS.SPACE + getWords(decimal);
+  }
+  return STRINGS.RUPEES + STRINGS.SPACE + result.trim() + (decimal > 0 ? STRINGS.SPACE + STRINGS.PAISE : "");
 };
