@@ -42,7 +42,7 @@ const STRINGS = {
 export const amountInWords = (amount: number): string => {
   let number: number = Math.floor(amount);
   let decimal: number = Number((amount - number).toFixed(2)) * 100;
-  if (number === 0 && decimal === 0) return STRINGS.ZERO;
+  if (number === 0 && decimal === 0) return (STRINGS.RUPEES + STRINGS.SPACE + STRINGS.ZERO);
   if (number > 9999999999) return STRINGS.LIMIT_EXCEED;
 
   const singleDigits = [STRINGS.ZERO, STRINGS.ONE, STRINGS.TWO, STRINGS.THREE, STRINGS.FOUR, STRINGS.FIVE, STRINGS.SIX, STRINGS.SEVEN, STRINGS.EIGHT, STRINGS.NINE];
@@ -82,7 +82,7 @@ export const amountInWords = (amount: number): string => {
     result += getWords(number);
   }
   if (decimal > 0) {
-    result += STRINGS.AND + STRINGS.SPACE + getWords(decimal);
+    result += (number > 0 ? STRINGS.SPACE : "") + STRINGS.AND + STRINGS.SPACE + getWords(decimal).trim();
   }
   return STRINGS.RUPEES + STRINGS.SPACE + result.trim() + (decimal > 0 ? STRINGS.SPACE + STRINGS.PAISE : "");
 };
