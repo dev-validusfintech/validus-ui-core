@@ -49,8 +49,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "@dev-validusfintech/validus-ui-core": "^1.0.6"
   }
 }

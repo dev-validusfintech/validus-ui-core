@@ -1,5 +1,6 @@
 const STRINGS = {
   AND: "and",
+  NEGATIE: "Negative",
   RUPEES: "Rupees",
   PAISE: "Paise",
   COMMA: ",",
@@ -37,13 +38,20 @@ const STRINGS = {
   LAKH: "Lakh",
   CRORE: "Crore",
   LIMIT_EXCEED: "Max limit crossed!",
+  MAX_LIMIT_EXCEED: "Maximum limit crossed!",
+  MIN_LIMIT_EXCEED: "Minimum limit crossed!",
 };
 
 export const amountInWords = (amount: number): string => {
-  let number: number = Math.floor(amount);
-  let decimal: number = Number((amount - number).toFixed(2)) * 100;
-  if (number === 0 && decimal === 0) return (STRINGS.RUPEES + STRINGS.SPACE + STRINGS.ZERO);
-  if (number > 9999999999) return STRINGS.LIMIT_EXCEED;
+  const positive = Math.abs(amount);
+  let number: number = Math.floor(positive);
+  let decimal: number = Number(positive.toString().split('.')[1]);
+
+  decimal = decimal > 99 ? Number(decimal.toString().slice(0, 2)) : decimal;
+
+  if (!number && !decimal) return (STRINGS.RUPEES + STRINGS.SPACE + STRINGS.ZERO);
+  if (amount > 10000000000) return STRINGS.MAX_LIMIT_EXCEED;
+  if (amount < -10000000000) return STRINGS.MIN_LIMIT_EXCEED;
 
   const singleDigits = [STRINGS.ZERO, STRINGS.ONE, STRINGS.TWO, STRINGS.THREE, STRINGS.FOUR, STRINGS.FIVE, STRINGS.SIX, STRINGS.SEVEN, STRINGS.EIGHT, STRINGS.NINE];
   const doubleDigits = [STRINGS.TEN, STRINGS.ELEVEN, STRINGS.TWELVE, STRINGS.THIRTEEN, STRINGS.FOURTEEN, STRINGS.FIFTEEN, STRINGS.SIXTEEN, STRINGS.SEVENTEEN, STRINGS.EIGHTEEN, STRINGS.NINETEEN];
@@ -84,5 +92,8 @@ export const amountInWords = (amount: number): string => {
   if (decimal > 0) {
     result += (number > 0 ? STRINGS.SPACE : "") + STRINGS.AND + STRINGS.SPACE + getWords(decimal).trim();
   }
-  return STRINGS.RUPEES + STRINGS.SPACE + result.trim() + (decimal > 0 ? STRINGS.SPACE + STRINGS.PAISE : "");
+
+  const finalResult = STRINGS.RUPEES + STRINGS.SPACE + (amount < 0 ? STRINGS.NEGATIE + STRINGS.SPACE : "") + result.trim() + (decimal > 0 ? STRINGS.SPACE + STRINGS.PAISE : "");
+
+  return finalResult;
 };
