@@ -45,9 +45,15 @@ const STRINGS = {
 export const amountInWords = (amount: number): string => {
   const positive = Math.abs(amount);
   let number: number = Math.floor(positive);
-  let decimal: number = Number(positive.toString().split('.')[1]);
+  let decimal: any = positive.toString().split('.')[1];
 
-  decimal = decimal > 99 ? Number(decimal.toString().slice(0, 2)) : decimal;
+  if (decimal > 99) {
+    decimal = Number(decimal.toString().slice(0, 2));
+  } else if (decimal?.length === 1) {
+    decimal *= 10
+  } else {
+    decimal = Number(decimal)
+  }
 
   if (!number && !decimal) return (STRINGS.RUPEES + STRINGS.SPACE + STRINGS.ZERO);
   if (amount > 10000000000) return STRINGS.MAX_LIMIT_EXCEED;

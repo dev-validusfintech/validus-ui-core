@@ -51,6 +51,7 @@ test("converts numbers to words", () => {
     "Rupees One Hundred Eleven Crore Eleven Lakh Eleven Thousand One Hundred Eleven",
   );
   expect(amountInWords(100.5)).toBe("Rupees One Hundred and Fifty Paise");
+  expect(amountInWords(-100.05)).toBe("Rupees Negative One Hundred and Five Paise");
   expect(amountInWords(2500.99)).toBe(
     "Rupees Two Thousand Five Hundred and Ninety Nine Paise",
   );
