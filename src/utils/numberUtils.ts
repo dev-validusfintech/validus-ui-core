@@ -1,6 +1,5 @@
 const STRINGS = {
   AND: "and",
-  NEGATIE: "Negative",
   RUPEES: "Rupees",
   PAISE: "Paise",
   COMMA: ",",
@@ -99,7 +98,7 @@ export const amountInWords = (amount: number): string => {
     result += (number > 0 ? STRINGS.SPACE : "") + STRINGS.AND + STRINGS.SPACE + getWords(decimal).trim();
   }
 
-  const finalResult = STRINGS.RUPEES + STRINGS.SPACE + (amount < 0 ? STRINGS.NEGATIE + STRINGS.SPACE : "") + result.trim() + (decimal > 0 ? STRINGS.SPACE + STRINGS.PAISE : "");
+  const finalResult = STRINGS.RUPEES + STRINGS.SPACE + result.trim() + (decimal > 0 ? STRINGS.SPACE + STRINGS.PAISE : "");
 
   return finalResult;
 };
