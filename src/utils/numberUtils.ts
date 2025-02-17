@@ -1,6 +1,6 @@
 const STRINGS = {
   AND: "and",
-  NEGATIE: "Negative",
+  NEGATIVE: "Negative",
   RUPEES: "Rupees",
   PAISE: "Paise",
   COMMA: ",",
