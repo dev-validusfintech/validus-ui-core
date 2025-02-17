@@ -11,6 +11,13 @@ test("converts numbers to words", () => {
   expect(amountInWords(-123456789.24)).toBe(
     "Rupees Twelve Crore Thirty Four Lakh Fifty Six Thousand Seven Hundred Eighty Nine and Twenty Four Paise",
   );
+  expect(amountInWords(-123456789.00)).toBe(
+    "Rupees Twelve Crore Thirty Four Lakh Fifty Six Thousand Seven Hundred Eighty Nine",
+  );
+  expect(amountInWords(-123456789.01)).toBe(
+    "Rupees Twelve Crore Thirty Four Lakh Fifty Six Thousand Seven Hundred Eighty Nine and One Paise",
+  );
+  
   expect(amountInWords(9999999999)).toBe(
     "Rupees Nine Hundred Ninety Nine Crore Ninety Nine Lakh Ninety Nine Thousand Nine Hundred Ninety Nine",
   );
