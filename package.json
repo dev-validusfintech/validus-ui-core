@@ -1,6 +1,6 @@
 {
   "name": "@dev-validusfintech/validus-ui-core",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Reusable TypeScript utilities for frontend (Mobile and Web)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
