@@ -17,5 +17,5 @@
     "declarationDir": "dist",  // ✅ Saves `.d.ts` files inside `dist/`
     "emitDeclarationOnly": false  // ✅ Ensures `.js` and `.d.ts` are both generated
   },
-  "include": ["src"]  // ✅ Compile only "src/", exclude "tests"
+  "include": ["src", "src/constants/numberConstants.ts"]  // ✅ Compile only "src/", exclude "tests"
 }
