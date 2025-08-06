@@ -1,6 +1,6 @@
 {
   "name": "validus-ui-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reusable TypeScript utilities for frontend (Mobile and Web)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
