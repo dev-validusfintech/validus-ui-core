@@ -1,5 +1,5 @@
 {
-  "name": "@dev-validusfintech/validus-ui-core",
+  "name": "validus-ui-core",
   "version": "1.0.0",
   "description": "Reusable TypeScript utilities for frontend (Mobile and Web)",
   "main": "dist/index.js",
@@ -20,7 +20,7 @@
   "author": "Shiv",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "repository": {
     "type": "git",
