@@ -1,150 +1,141 @@
-# 🚀 **Shared Utils - Reusable TypeScript Utility Library**
+# 🚀 validus-ui-core – Reusable TypeScript Utility Library
 
-Welcome to **Shared Utils**, a TypeScript-based utility package designed for **frontend and backend** development.
+**validus-ui-core** is a lightweight, reusable utility library built with TypeScript for both frontend and backend applications.
 
-This package ensures:
+This package is designed to promote:
 
-- 🎯 **Maintainability** – Standardized utility functions.
-- ⚡ **Reusability** – Avoid duplicating logic across projects.
-- 🏗 **Scalability** – Works across different environments seamlessly.
-
----
-
-## 🔧 **Installation Guide**
-
-### 🔑 **Prerequisite: Generate a GitHub Personal Access Token (PAT)**
-
-Since this package is private, you need a **GitHub Personal Access Token (PAT)** with the right permissions to install it.
-
-#### **Steps to Generate a GitHub PAT:**
-1️⃣ **Log into GitHub**
-2️⃣ Navigate to **`Settings → Developer Settings → Personal Access Tokens`**
-3️⃣ Click **"Generate new token"**
-4️⃣ Select **`read:packages`** permission (and `write:packages` if publishing)
-5️⃣ Click **Generate token** and **copy it** (it won’t be visible again!)
+- 🎯 **Maintainability** – Consistent, standardized utility functions across projects.
+- ⚡ **Reusability** – DRY code via centralized logic and helpers.
+- 🏗 **Scalability** – Seamless use across environments, including Node.js and browsers.
 
 ---
 
-### 📥 **Configure npm for GitHub Packages**
+## 📦 Installation
 
-Before installing, you need to authenticate using the generated token.
+This package is **publicly available on NPM** – no authentication required.
 
-1️⃣ Create a `.npmrc` file in your project’s root folder:
-```ini
-//npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
-@dev-validusfintech:registry=https://npm.pkg.github.com/
-```
-📌 **Replace** `YOUR_PERSONAL_ACCESS_TOKEN` with the token you generated.
+### Using npm
 
----
-
-### 📥 **Install via npm**
-```sh
-npm install @dev-validusfintech/validus-ui-core
+```bash
+npm install validus-ui-core
 ```
 
-### 📥 **Install via Yarn**
-```sh
-yarn add @dev-validusfintech/validus-ui-core
+### Using Yarn
+
+```bash
+yarn add validus-ui-core
 ```
 
 ---
 
-## 💻 **Usage**
+## 💻 Usage
 
-Import and use the utilities in your **TypeScript/JavaScript** projects:
+Import and use the utilities in your TypeScript or JavaScript projects:
 
-### 🔢 **Number Utilities**
-```typescript
-import { amountInWords } from "@dev-validusfintech/validus-ui-core";
+### 🔢 Number Utilities
+
+```ts
+import { amountInWords } from "validus-ui-core";
 
 console.log(amountInWords(123)); // "One Hundred Twenty-Three"
 ```
 
-### 🔤 **String Utilities**
-```typescript
-import { capitalize } from "@dev-validusfintech/validus-ui-core";
+### 🔤 String Utilities
+
+```ts
+import { capitalize } from "validus-ui-core";
 
 console.log(capitalize("hello world")); // "Hello World"
 ```
 
-### 📅 **Date Utilities**
-```typescript
-import { formatDate } from "@dev-validusfintech/validus-ui-core";
+### 📅 Date Utilities
 
-console.log(formatDate(new Date(), "YYYY-MM-DD")); // "2025-02-12"
+```ts
+import { formatDate } from "validus-ui-core";
+
+console.log(formatDate(new Date(), "YYYY-MM-DD")); // "2025-08-06"
 ```
 
 ---
 
-## 📦 **Building & Testing**
-### 🚀 **Build the Package**
-```sh
+## ⚙️ Scripts
+
+### 🛠 Build
+
+```bash
 npm run build
 ```
 
-### 🧪 **Run Tests**
-```sh
+### 🧪 Run Tests
+
+```bash
 npm test
 ```
 
 ---
 
-## 📊 **Versioning & Publishing**
+## 🚀 Publishing to NPM
 
-### ✅ **1️⃣ Ensure Clean Git State**
-```sh
+### 1. Ensure a clean Git state
+
+```bash
 git status
 git add .
 git commit -m "chore: prepare for release"
 ```
 
-### 🔢 **2️⃣ Version Update**
-📌 **For a patch release (bug fixes):**
-```sh
+### 2. Bump version
+
+Use the appropriate version update based on your changes:
+
+```bash
+# For bug fixes
 npm version patch
-```
-📌 **For a minor release (new features):**
-```sh
+
+# For new features
 npm version minor
-```
-📌 **For a major release (breaking changes):**
-```sh
+
+# For breaking changes
 npm version major
 ```
 
-### 🚀 **3️⃣ Push & Publish**
-```sh
-git push origin main --follow-tags
-npm publish --access=restricted
+### 3. Publish to npm
+
+```bash
+npm publish --access public
 ```
 
 ---
 
-## 📊 **Commit Guidelines**
-This project follows **conventional commits** for structured commit history:
+## 📏 Commit Guidelines
 
-- 🎉 `feat`: New feature
-- 🐛 `fix`: Bug fix
-- 📖 `docs`: Documentation update
-- 🔄 `refactor`: Code restructuring
-- 🏗 `build`: Build system updates
-- 🏷 `chore`: Maintenance work
-- ⚡ `perf`: Performance improvements
-- 🧪 `test`: Add/modify tests
-- 🚀 `ci`: CI/CD changes
-- 🎨 `style`: Code formatting & style
+We follow **conventional commits** for clear and meaningful history:
 
-📌 **Example Commit:**
-```sh
+| Type        | Description                     |
+|-------------|---------------------------------|
+| `feat`      | ✨ New feature                   |
+| `fix`       | 🐛 Bug fix                      |
+| `docs`      | 📖 Documentation changes        |
+| `refactor`  | 🔄 Code restructuring            |
+| `style`     | 🎨 Formatting (no code change)   |
+| `test`      | 🧪 Add or update tests          |
+| `build`     | 🏗 Build system changes          |
+| `chore`     | 🏷 Maintenance or tooling       |
+| `ci`        | 🚀 CI/CD config updates         |
+| `perf`      | ⚡ Performance improvements     |
+
+📌 **Example:**
+
+```bash
 git commit -m "feat: add amountInWords utility function"
 ```
 
 ---
 
-## 📜 **License**
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-💙 **Crafted with ❤️ for Developers** 🚀
+> 💙 Built with care by the Validus team — for developers, by developers.
